@@ -33,6 +33,7 @@ if [ "$1" = "" ]; then
 fi
 
 old_version=$1
+db_migrate=$2
 backup_dir=$AIPO_HOME.backup${TIME}
 
 #///////////////////////////////////////////////
@@ -58,7 +59,9 @@ databaseRestore
 
 startPostgres
 portListenWait ${POSTGRES_PORT}
-applySQL "8010to8100"
+if [ "$db_migrate" != "" ]; then
+        applySQL $db_migrate
+fi
 stopPostgres
 
 ipaddr=`ip -f inet -o addr | grep -v "127.0.0.1" | cut -d\  -f 7 | cut -d/ -f 1 | awk 'NR == 1'`
