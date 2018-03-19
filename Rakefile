@@ -20,6 +20,7 @@ require 'fileutils'
 require 'date'
 
 LATEST_BRANCH        = "v8.1.1-20171109"
+OS_LATEST_BRANCH     = "v8.1.1-20171211"
 STABLE_BRANCH        = "v8.1.1"
 NOW                  =  DateTime.now.strftime("%Y%m%d")
 LATEST_VERSION       = "latest-#{NOW}"
@@ -116,7 +117,7 @@ def build_aipo(branch: "#{LATEST_BRANCH}")
   sh %[(cd #{BUILD_DIR}/aipo; mvn clean; mvn install)]
 end
 
-def build_aipo_opensocial(branch: "#{LATEST_BRANCH}")
+def build_aipo_opensocial(branch: "#{OS_LATEST_BRANCH}")
   sh %[mkdir -p "#{BUILD_DIR}"]
   sh %[(cd #{BUILD_DIR}; git clone -b #{branch} https://github.com/aipocom/aipo-opensocial.git)]
   sh %[(cd #{BUILD_DIR}/aipo-opensocial; mvn clean; mvn install)]
