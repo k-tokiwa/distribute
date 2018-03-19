@@ -19,7 +19,7 @@
 require 'fileutils'
 require 'date'
 
-LATEST_BRANCH        = "master"
+LATEST_BRANCH        = "v8.1.1-20171109"
 STABLE_BRANCH        = "v8.1.1"
 NOW                  =  DateTime.now.strftime("%Y%m%d")
 LATEST_VERSION       = "latest-#{NOW}"
